@@ -1,0 +1,54 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.config/vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'itchyny/lightline.vim' " bar at the bottom
+Plugin 'posva/vim-vue' " vue
+Plugin 'Quramy/vim-js-pretty-template' "prettify js templates
+Plugin 'junegunn/fzf.vim' " fuzzy search
+Plugin 'flazz/vim-colorschemes' "colorschemes pack
+Plugin 'sheerun/vim-polyglot' "syntax color
+Plugin 'scrooloose/nerdcommenter'
+"Plugin 'Valloric/YouCompleteMe' 
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+"sets
+set laststatus=2
+set ruler
+set t_Co=256
+set number
+set enc=utf-8
+set fenc=utf-8
+set termencoding=utf-8
+set wrap
+set ttyfast "Speed up vim
+set autoindent
+set smartindent
+set mouse=a "To use mouse for change position of cursor
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+syntax on
+
+
+"functions
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+colorscheme dracula
+set rtp+=~/.fzf " For fuzzysearch
+filetype plugin on
+
+nmap <C-P> :GFiles<CR>
+nnoremap <C-O> :Ag<CR>
